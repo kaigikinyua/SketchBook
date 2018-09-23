@@ -6,7 +6,7 @@ void adddestination(char vertex[5],int distance[5],char destination){
   FILE *fptr;
   fptr=fopen("Vertices.txt","a");
   for (int i=0;i<=4;i++)
-  { if (distance[i]!=0 and distance[i]!=NULL){
+  { if (distance[i]!=0){
       fprintf(fptr,"\n %c - %c [%d]",destination,vertex[i],distance[i]);
     }
   }
@@ -28,11 +28,13 @@ int main(){
     for (int i=0;i<=d;i++){
       char current=vertex[i];
         for(int j=0;j<=d;j++){
+          int distance[5];
           if(j!=i and i<j){
-            int distance[5];
             cout<<"Distance from "<<current<<" to "<<vertex[j]<<endl;
             cin>>distance[j];
             if (j==d){adddestination(vertex,distance,current);}
+          }else{
+            distance[j]=0;
           }
         }
     }
