@@ -7,7 +7,7 @@ void adddestination(char vertex[5],int distance[5],char destination){
   fptr=fopen("Vertices.txt","a");
   for (int i=0;i<=4;i++)
   { if (distance[i]!=0){
-      fprintf(fptr,"\n %c - %c [%d]",destination,vertex[i],distance[i]);
+      fprintf(fptr,"\n '%c' - '%c' [%d]",destination,vertex[i],distance[i]);
     }
   }
   fclose(fptr);
