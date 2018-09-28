@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 //memory management in c
+//to be continued
 int main(){
   int *ptr;
   ptr=(int*)malloc(1*sizeof(int));
