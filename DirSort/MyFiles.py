@@ -1,4 +1,7 @@
+import threading
+import time
 import os
+import sys
 #procedure 
 """
     1.list * the files and folders in the directory to be sorted
@@ -9,29 +12,45 @@ import os
     6.animation thread to prevent canceling
 """
 class Sort:
+    global numFiles,remaning
     def getDestination(self):
         destination=raw_input("Enter the directory to sort\n");
-        listb4=os.listdir(self.destination)
-        #file write
-        write("b4sort")
-        sort(listb4)
-        move(destination)
+        listb4=os.listdir(destination)
+        #
+        l=Sort()
+        numFiles=len(listb4)
+        remaining=numFiles
 
-    def write(self,file)
+        anim=threading.Thread(target=l.animation,name="anim")
+        move=threading.Thread(target=l.move,name="move",args=(listb4,))
+        anim.start()
+        move.start()
+
+    def animation(self):
+        l=Sort()
+        while True:
+            sys.stdout.write(remainig+"/"+numFiles+" moved ")
+            sys.stdout.flush()
+            time.sleep(0.5)
+            if(l.remainig==l.numFiles):
+                return "Done"
+
+    """def write(self,file)
         filen=open("b4Sort.txt","w")
         filen.write(listb4)
         filen.close()
 
-    def move(destination):
-        os.mo
-        
     def sort(unsorted):
         explode(".",unsorted)
-        
+
     def explode(sym,data):
         lastStr
         for char in item:
             if(char==sym):
                 lastStr+=char
-
+    """
+    def move(self,destination):
+        self.remaining=self.remaining-1
+l=Sort()
+l.getDestination()
 
