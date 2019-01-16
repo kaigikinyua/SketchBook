@@ -12,45 +12,56 @@ import sys
     6.animation thread to prevent canceling
 """
 class Sort:
-    global numFiles,remaning
+    numFiles=0;
     def getDestination(self):
         destination=raw_input("Enter the directory to sort\n");
         listb4=os.listdir(destination)
         #
         l=Sort()
         numFiles=len(listb4)
-        remaining=numFiles
-
+        self.remaining=numFiles
+        print numFiles
+        l=Sort()
+        for item in listb4:
+            l.sort(item)
         anim=threading.Thread(target=l.animation,name="anim")
-        move=threading.Thread(target=l.move,name="move",args=(listb4,))
+        #move=threading.Thread(target=l.move,name="move",args=(listb4,))
         anim.start()
-        move.start()
+        #move.start()"""
+
+    def move(self,destination):
+        self.remaining=self.remaining-1
 
     def animation(self):
         l=Sort()
-        while True:
-            sys.stdout.write(remainig+"/"+numFiles+" moved ")
-            sys.stdout.flush()
+        total=20;counter=0;i=0;
+        anim=['|','/','-','\\']
+        while (counter<=total):
+            sys.stdout.write("\r"+str(counter)+"/"+str(total)+" moved "+anim[i])
             time.sleep(0.5)
-            if(l.remainig==l.numFiles):
-                return "Done"
-
-    """def write(self,file)
-        filen=open("b4Sort.txt","w")
-        filen.write(listb4)
-        filen.close()
-
-    def sort(unsorted):
-        explode(".",unsorted)
-
-    def explode(sym,data):
-        lastStr
-        for char in item:
-            if(char==sym):
-                lastStr+=char
-    """
-    def move(self,destination):
-        self.remaining=self.remaining-1
+            counter+=1;i+=1;
+            sys.stdout.flush()
+            if(i>3):
+                i=0;
+        sys.stdout.write("\n")
+    def sort(self,item):
+        l=Sort()
+        extension=l.explode(item)
+        print extension
+    
+    def explode(self,name):
+        l=len(name)
+        i=0;dot=l-1;ext="";
+        for i in range(l-1):
+            if(name[dot]!="."):
+                ext+=name[dot]
+                dot-=1
+        extension=""
+        i=len(ext)-1
+        while(i>=0):
+            extension+=ext[i]
+            i-=1
+        return extension
 l=Sort()
 l.getDestination()
 
