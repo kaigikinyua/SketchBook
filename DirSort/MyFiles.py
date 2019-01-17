@@ -29,9 +29,6 @@ class Sort:
         anim.start()
         #move.start()"""
 
-    def move(self,destination):
-        self.remaining=self.remaining-1
-
     def animation(self):
         l=Sort()
         total=20;counter=0;i=0;
@@ -44,10 +41,12 @@ class Sort:
             if(i>3):
                 i=0;
         sys.stdout.write("\n")
+
     def sort(self,item):
         l=Sort()
         extension=l.explode(item)
-        print extension
+        #print extension
+        l.move(item)
     
     def explode(self,name):
         l=len(name)
@@ -62,6 +61,10 @@ class Sort:
             extension+=ext[i]
             i-=1
         return extension
+    
+    def move(self,item):
+        
+
 l=Sort()
 l.getDestination()
 
