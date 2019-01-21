@@ -26,7 +26,8 @@ class Sort:
             l.sort(item)
         anim=threading.Thread(target=l.animation,name="anim")
         #move=threading.Thread(target=l.move,name="move",args=(listb4,))
-        anim.start()
+        l.loadSettings()
+        #anim.start()
         #move.start()"""
 
     def animation(self):
@@ -45,8 +46,12 @@ class Sort:
     def sort(self,item):
         l=Sort()
         extension=l.explode(item)
+        #f=open("settings","r")
+        #settings=f.readlines()
+        #f.close()
+        #creating the format 
+        #l.move(item)
         #print extension
-        l.move(item)
     
     def explode(self,name):
         l=len(name)
@@ -61,10 +66,44 @@ class Sort:
             extension+=ext[i]
             i-=1
         return extension
-    
-    def move(self,item):
-        
+    def loadSettings(self):
+        try:
+            f=open("settings","r")
+            self.settings=f.readlines()
+            print self.settings
+            f.close()
+        except:
+            ans=raw_input("You do not have an automatic configration\n\nWould you like to set up one?\n\ny/n\n")
+            ans=ans.lower()
+            if ans=="y":
+                f=open("settings","w")
+                quit=False
+                while(quit!=True):
+                    extensions=raw_input("enter the file extension(s) (placing  a . after each if they are many)\n")
+                    destination=raw_input("Enter the absolute directory where you would like to place these files\n")
+                    if(os.path.isdir(destination)==True):
+                        #start execution
+                        f.write(extensions+"["+destination+"]"+"\n")
+                        ansquit=raw_input("Add another extension? y/n\n")
+                        ansquit=ansquit.lower()
+                        if(ansquit=="n"):
+                            quit=True
+                            f.close()
+                            f=open("settings","r")
+                            self.settings=f.readlines()
+                            f.close()
+                    else:
+                        print("The path you specified is either not a directory or does not exist\n")
+
+            elif ans=="n":
+                #should start executing but the user will have to enter directories manually
+                print ("Hello")
+                
+            else:
+                print("Please enter y/n")
+                l=Sort()
+                l.loadSettings()
 
 l=Sort()
 l.getDestination()
-
+#l.loadSettings()
