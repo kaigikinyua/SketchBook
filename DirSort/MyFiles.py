@@ -1,3 +1,4 @@
+import glob
 import threading
 import time
 import os
@@ -16,19 +17,28 @@ class Sort:
     def getDestination(self):
         destination=raw_input("Enter the directory to sort\n");
         listb4=os.listdir(destination)
-        #
         l=Sort()
         numFiles=len(listb4)
         self.remaining=numFiles
         print numFiles
-        l=Sort()
-        for item in listb4:
-            l.sort(item)
-        anim=threading.Thread(target=l.animation,name="anim")
+        return destination
+        #l=Sort()
+        #for item in listb4:
+         #   l.sort(item)
+        #anim=threading.Thread(target=l.animation,name="anim")
         #move=threading.Thread(target=l.move,name="move",args=(listb4,))
-        l.loadSettings()
         #anim.start()
         #move.start()"""
+
+    def move(self):
+        l=Sort()
+        settings=l.loadSettings()
+        listb4=l.getDestination()
+        os.chdir(listb4)
+        if (settings!=False):
+            for i in range(len(settings)):
+                l.fileFormat(settings[i])
+            print settings[i]
 
     def animation(self):
         l=Sort()
@@ -66,12 +76,14 @@ class Sort:
             extension+=ext[i]
             i-=1
         return extension
+
     def loadSettings(self):
         try:
             f=open("settings","r")
-            self.settings=f.readlines()
-            print self.settings
+            settings=f.readline()
             f.close()
+            print "Settings loaded automatically "+settings
+            return settings
         except:
             ans=raw_input("You do not have an automatic configration\n\nWould you like to set up one?\n\ny/n\n")
             ans=ans.lower()
@@ -92,18 +104,41 @@ class Sort:
                             f=open("settings","r")
                             self.settings=f.readlines()
                             f.close()
+                            return self.settings
                     else:
                         print("The path you specified is either not a directory or does not exist\n")
 
             elif ans=="n":
                 #should start executing but the user will have to enter directories manually
-                print ("Hello")
+                return False
                 
             else:
                 print("Please enter y/n")
                 l=Sort()
                 l.loadSettings()
 
+    def fileFormat(self,sett):
+        path=""
+        finalSett=[]
+        temp=""
+        for i in range(len(sett)-1):
+            if(sett[i]!="." or sett[i]!="[" or sett[i]!="]"):
+                temp+=sett[i]
+            elif(sett[i]=="."):
+                finalSett+=[temp]
+                print temp
+                temp=""
+            elif(sett[i]=="["):
+                temp=""
+                while(i<=len(sett)-1 and sett[i]!="]" and sett[i]!="\n"):
+                    temp+=sett[i]
+                    i+=1
+                path=temp
+                print path
+                finalSett+=[path]
+            else:
+                print "Error"
+        print finalSett
 l=Sort()
-l.getDestination()
+l.move()
 #l.loadSettings()
