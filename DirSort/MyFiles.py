@@ -37,8 +37,8 @@ class Sort:
         os.chdir(listb4)
         if (settings!=False):
             for i in range(len(settings)):
-                l.fileFormat(settings[i])
-            print settings[i]
+                #l.fileFormat(settings[i])
+                print settings
 
     def animation(self):
         l=Sort()
@@ -80,7 +80,7 @@ class Sort:
     def loadSettings(self):
         try:
             f=open("settings","r")
-            settings=f.readline()
+            settings=f.read().split("\n")
             f.close()
             print "Settings loaded automatically "+settings
             return settings
@@ -117,7 +117,10 @@ class Sort:
                 l=Sort()
                 l.loadSettings()
 
-    def fileFormat(self,sett):
+    def fileFormat(self,settings):
+        print "Hello"
+
+    """ def fileFormat(self,sett):
         path=""
         finalSett=[]
         temp=""
@@ -138,7 +141,7 @@ class Sort:
                 finalSett+=[path]
             else:
                 print "Error"
-        print finalSett
+                """
 l=Sort()
 l.move()
 #l.loadSettings()
