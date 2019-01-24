@@ -3,6 +3,7 @@ import threading
 import time
 import os
 import sys
+import shutil
 #procedure 
 """
     1.list * the files and folders in the directory to be sorted
@@ -16,12 +17,11 @@ class Sort:
     numFiles=0;
     def getDestination(self):
         destination=raw_input("Enter the directory to sort\n");
-        listb4=os.listdir(destination)
-        l=Sort()
-        numFiles=len(listb4)
-        self.remaining=numFiles
-        print numFiles
         return destination
+    def destinationList(self,destination):
+        listb4=os.listdir(destination)
+        numFiles=len(listb4)
+        return listb4
         #l=Sort()
         #for item in listb4:
          #   l.sort(item)
@@ -33,13 +33,25 @@ class Sort:
     def move(self):
         l=Sort()
         settings=l.loadSettings()
-        listb4=l.getDestination()
-        os.chdir(listb4)
+        fromDest=l.getDestination()
+        listb4=l.destinationList(fromDest)
         if (settings!=False):
-            for i in range(len(settings)):
-                #l.fileFormat(settings[i])
-                print settings
-
+            for i in range(len(settings)-1):
+                settExt=settings[i].split(".")
+                settBound=0
+                for k in range(len(settExt)-1):
+                    for j in range(len(listb4)-1):
+                        x=listb4[j].split(".")
+                        #print fromDest+" to "+str(settExt[len(settExt)-1])
+                        try:
+                            if x[1]==settExt[k]:
+                                shutil.copy(fromDest+"/"+str(listb4[j]),settExt[len(settExt)-1])
+                                print "Copied "+str(listb4[j])+" from "+str(fromDest)+" "+" to "+str(settExt[len(settExt)-1])
+                            #else:
+                            #    print "Error in copying "+fromDest+"/"+str(listb4[j])+" to "+str(settExt[len(settExt)-1])
+                        except:
+                            #print "File "+str(listb4[j])+" does not have an extension"
+                            i=0
     def animation(self):
         l=Sort()
         total=20;counter=0;i=0;
@@ -81,11 +93,11 @@ class Sort:
         try:
             f=open("settings","r")
             settings=f.read().split("\n")
-            f.close()
-            print "Settings loaded automatically "+settings
+            print "Settings loaded automatically "
+            print settings
             return settings
         except:
-            ans=raw_input("You do not have an automatic configration\n\nWould you like to set up one?\n\ny/n\n")
+            ans=raw_input("-----ERROR----\nYou do not have an automatic configration\n\nWould you like to set up one?\n\ny/n\n")
             ans=ans.lower()
             if ans=="y":
                 f=open("settings","w")
@@ -95,7 +107,7 @@ class Sort:
                     destination=raw_input("Enter the absolute directory where you would like to place these files\n")
                     if(os.path.isdir(destination)==True):
                         #start execution
-                        f.write(extensions+"["+destination+"]"+"\n")
+                        f.write(extensions+"."+destination+"\n")
                         ansquit=raw_input("Add another extension? y/n\n")
                         ansquit=ansquit.lower()
                         if(ansquit=="n"):
