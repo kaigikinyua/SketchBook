@@ -40,6 +40,8 @@ class Sort:
                 settExt=settings[i].split(".")
                 settBound=0
                 for k in range(len(settExt)-1):
+                    #print moving *.whatever to dir..
+                    #animation to show the user the completed tasks
                     for j in range(len(listb4)-1):
                         x=listb4[j].split(".")
                         #print fromDest+" to "+str(settExt[len(settExt)-1])
@@ -52,6 +54,7 @@ class Sort:
                         except:
                             #print "File "+str(listb4[j])+" does not have an extension"
                             i=0
+        #else enter a dirctory to move the files into
     def animation(self):
         l=Sort()
         total=20;counter=0;i=0;
