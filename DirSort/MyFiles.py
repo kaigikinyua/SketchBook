@@ -22,13 +22,6 @@ class Sort:
         listb4=os.listdir(destination)
         numFiles=len(listb4)
         return listb4
-        #l=Sort()
-        #for item in listb4:
-         #   l.sort(item)
-        #anim=threading.Thread(target=l.animation,name="anim")
-        #move=threading.Thread(target=l.move,name="move",args=(listb4,))
-        #anim.start()
-        #move.start()"""
 
     def move(self):
         l=Sort()
@@ -94,7 +87,7 @@ class Sort:
 
     def loadSettings(self):
         try:
-            f=open("settings","r")
+            f=open("settings","r") 
             settings=f.read().split("\n")
             print "Settings loaded automatically "
             print settings
@@ -135,28 +128,6 @@ class Sort:
     def fileFormat(self,settings):
         print "Hello"
 
-    """ def fileFormat(self,sett):
-        path=""
-        finalSett=[]
-        temp=""
-        for i in range(len(sett)-1):
-            if(sett[i]!="." or sett[i]!="[" or sett[i]!="]"):
-                temp+=sett[i]
-            elif(sett[i]=="."):
-                finalSett+=[temp]
-                print temp
-                temp=""
-            elif(sett[i]=="["):
-                temp=""
-                while(i<=len(sett)-1 and sett[i]!="]" and sett[i]!="\n"):
-                    temp+=sett[i]
-                    i+=1
-                path=temp
-                print path
-                finalSett+=[path]
-            else:
-                print "Error"
-                """
 l=Sort()
 l.move()
 #l.loadSettings()
