@@ -1,13 +1,13 @@
+from messages import *
 filename =""
 class FileManage():
-    def __init__(self):
+    def __init__(self,fn):
         global filename
-        filename=raw_input("Enter the filename");
+        filename=fn;
         unwanted=[" ","."];
         if(len(filename)>0):
             for un in unwanted:
                 if filename==un:
-                    print "file cannot be named '"+filename+"' \nplease try again"
                     c=FileManage()
         else:
             print "Filename cannot be empty"
@@ -18,6 +18,7 @@ class FileManage():
         try:
             f=open(filename,"w")
             f.close()
+            m=Messages("s","Created a file sucessfully ")
         except():
             print "Error in creating file"
 #append text to the end
@@ -58,3 +59,13 @@ class FileManage():
             f.close()
         except():
             print "Error in creating the file"
+
+    def readFile(self):
+        try:
+            f=open(filename,"r");
+            content=f.readlines()
+            f.close()
+            return content
+        except():
+            print "Error while reading file"
+            return False
