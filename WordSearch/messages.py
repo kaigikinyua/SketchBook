@@ -1,7 +1,7 @@
 class Messages():
-    def __init__(self,state,message):
+    def message(self,state,message):
         #sucess
-        if (state.lower()=="s"):
-            print (message+" done :)")
+        if state.lower()!="s":
+            return ":( error while: "+message
         else:
-            print (message+" failed x(")
+            return message+"....Done :)"

@@ -8,9 +8,9 @@ class GUI:
 	def __init__(self):
 		self.root=Tk()
 		userPanel=Frame(self.root)
+		scrolbar=Scrollbar(self.root)
+		scrolbar.pack(side=RIGHT,fill=Y)
 		self.chatPanel=Frame(self.root,width=200,height=400)
-		scrolbar=Scrollbar(self.chatPanel)
-		scrolbar.pack(side=RIGHT)
 		self.chatPanel.pack(side=TOP)
 		self.settingsPanel=Frame(self.root)
 		settB=Button(self.settingsPanel,text="Settings",bg="green",fg="white",command=self.importList)

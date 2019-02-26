@@ -9,9 +9,9 @@ class FileManage():
             for un in unwanted:
                 if filename==un:
                     c=FileManage()
+                    return "filename cannot be "+filename
         else:
-            print "Filename cannot be empty"
-            c=FileManage()
+            return "emptyFileName"
 
 #create file with the filename
     def createFile(self):
@@ -51,14 +51,15 @@ class FileManage():
                 f.close()
         except:
             print "Error in preappending to file"
-
     def writeToFile(self,text):
         try:
             f=open(filename,"w");
             f.write(text)
             f.close()
+            return True
         except():
             print "Error in creating the file"
+            return False
 
     def readFile(self):
         try:
