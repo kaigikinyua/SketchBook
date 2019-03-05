@@ -59,38 +59,43 @@ class Search():
                 lineNo+=1
     #def likeWord(self):
     def likeWord(self,fileContent,word):
-        lineNo=0
+        lineNo=1
         s=Search()
-        for line in fileContent:
-            #search for the index of the word and the first letter of the word after the *
-            if word[0]!="*":
-                x=s.newLineSep(line);
-                i=1;
-                for letter in x:
-                    if word[i]==x[i]:
-                        i+=1
-                        if(len(x)==i):
-                            return True
-                    else:
+        #search for the index of the word and the first letter of the word after the *
+        if word[0]=="*":
+            for myWord in fileContent:
+                i=1
+                while i<range(len(word)-1):
+                    if word[i]!=myWord[i]:
+                        if myWord[len(myWord)-1]=="\n":
+                            lineNo+=1
                         break;
-            elif word[len(word)-1]=="*":
-                #search for the words starting from the beginnning
-                x=s.newLineSep(line)
-                i=0
-                for letter in x:
-                    if word[i]==x[i]:
-                        i+=1
-                        if(len(x)==(i+1)):
-                            return True
                     else:
+                        if (len(word)-1)==i:
+                            print word+" word matches with "+myWord+" at line "+str(lineNo)
+                            break;
+                        print myWord+" "+word[i]+" does match with "+myWord[i];
+                        i+=1
+        elif word[len(word)-1]=="*":
+            for myWord in fileContent:
+                i=0;
+                while i<range(len(word)-1):
+                    if word[i].lower()!=myWord[i].lower():
+                        if myWord[len(myWord)-1]=="\n":
+                            lineNo+=1
                         break;
-            else:
-                print ":( Appication Broken :x "+word
+                    else:
+                        if (len(word)-1)==i:
+                            print word+" word matches with "+myWord+" at line "+str(lineNo)
+                            break;
+                        i+=1
+        else:
+            print ":X script did not get a ' * ' :("
     #character support
     def newLineSep(self,word):
         w=""
         for i in range(len(word)):
-            if (word[i]=="\n" or word[i]==" " or word[i]=="."):
+            if (word[i]=="\n" or word[i]==" "):
                 return w
             else:
                 w+=word[i]
