@@ -80,9 +80,10 @@ class Search():
             for myWord in fileContent:
                 i=0;
                 while i<range(len(word)-1):
-                    if word[i].lower()!=myWord[i].lower():
+                    if word[i].lower()!=myWord[i].lower() and i<len(word)-1:
                         if myWord[len(myWord)-1]=="\n":
                             lineNo+=1
+                            print myWord[i]+" does not match with "+word[i]
                         break;
                     else:
                         if (len(word)-1)==i:
