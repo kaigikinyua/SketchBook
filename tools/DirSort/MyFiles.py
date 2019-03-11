@@ -67,28 +67,10 @@ class Sort:
                             time.sleep(0.5)
                             i=0
         #else enter a dirctory to move the files into
-    def animation(self):
-        l=Sort()
-        total=20;counter=0;i=0;
-        anim=['|','/','-','\\']
-        while (counter<=total):
-            sys.stdout.write("\r"+str(counter)+"/"+str(total)+" moved "+anim[i])
-            time.sleep(0.5)
-            counter+=1;i+=1;
-            sys.stdout.flush()
-            if(i>3):
-                i=0;
-        sys.stdout.write("\n")
 
     def sort(self,item):
         l=Sort()
         extension=l.explode(item)
-        #f=open("settings","r")
-        #settings=f.readlines()
-        #f.close()
-        #creating the format
-        #l.move(item)
-        #print extension
 
     def explode(self,name):
         l=len(name)

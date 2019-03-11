@@ -1,0 +1,8 @@
+[Done] 1.Need to get the settings for the destination of the file extensions
+[Done] 2.Loop through the files placing them in the required path according to the settings
+[----] 3.Take an before move file structure and after move file structure and save it to a file together with time and date of the sort
+[----] 4.Filter the unmoved files may be due to lack of specification of the file extension in the settings
+	{do this my using objects instead of many for loops[object.ext?==ext]}
+[----] 5.Add a sophisticated file word search algorithim to filter any favourite files according to a precious list
+[----] 6.Create an Electron GUI and package the app
+
