@@ -1,0 +1,43 @@
+div.navbar{
+	left:0px;
+	position: fixed;
+	height:100%;
+	width:20%;
+	min-width: 170px;
+	background:rgb(0,0,0,0.9);
+	border-right:1px solid lightgreen;
+	color:white;
+	padding:10px;
+	z-index: 2;
+}
+a{
+	text-decoration: none;
+}
+ul.navbar{
+	margin-top: 100px;
+	list-style: none;
+	text-decoration: none;
+}
+a li{
+	padding:5px;
+	border:1px solid white;
+	margin-bottom: 10px;
+	text-align: center;
+	color:white;
+}
+a li:hover{
+	background:rgba(50,250,50,0.7);
+	color:rgba(50,250,50);
+	border:none;
+	color:white;
+	transform: scaleX(1.1);
+	transition: 1s ease-in-out;
+}
+a li.active{
+	border:1px solid rgba(50,250,50);
+	color:rgba(50,250,50);
+}
+a li.active:hover{
+	color: white;
+	border:1px solid white;
+}
