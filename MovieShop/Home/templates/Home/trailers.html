@@ -1,9 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Trailers</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'CSS/navbar.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'CSS/basics.css' %}">
 </head>
+	<div class="barner">
+		<center><h2>Trailers</h2></center>
+	</div>
+	<div class="navbar">
+		<ul class="navbar">
+			<a href="home.html"><li>Home</li></a>
+			<a href="trailers.html"><li class="active">Trailers</li></a>
+			<a href="Movies.html"><li>Movies</li></a>
+			<a href="comments.html"><li>Comments</li></a>
+		</ul>
+	</div>
+	<!--load trailers from the files -->
 <body>
-	Avengers Endgame
 </body>
 </html>

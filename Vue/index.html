@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VueJs</title>
+	<link rel="stylesheet" type="text/css" href="main.css"/>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div class="topNav">
+		<div class="s-box" id="s-box">
+			<input class="s-box" type="text" name="item" v-bind:placeholder="item"/>
+		</div>
+	</div>
+	<div style="height: 100px"></div>
+	<div class="chatPage" id="chatPage">
+		<div class="messages" id="messages" v-for="message in messages">
+			<div class="name">{{message.name}}</div>
+			<div class="message">{{message.message}}</div>
+			<!--add a reply buttton that generates a chatbox and--->
+		</div>
+	</div>
+	<script src="app.js"></script>
+</body>
+</html>

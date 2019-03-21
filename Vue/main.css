@@ -1,0 +1,61 @@
+body{
+	padding:0px;
+	margin:0px;
+}
+div.topNav{
+	position: fixed;
+	background: rgb(250,100,20);
+	width:100%;
+	padding:10px;
+	color:white;
+}
+div.s-box{
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
+input.s-box{
+	background: rgba(250,250,250);
+	border:none;
+	color:rgb(250,100,20);
+	padding:5px;
+	padding-left:10px; 
+	font-weight: bold;
+	width:80px;
+}
+input.s-box:hover{
+	transition: 1s ease-in-out;
+	width:250px;
+}
+input.s-box:focus{
+	transition: 1s ease-in-out;
+	width:250px;	
+}
+div.chatPage{
+	width:100%;
+}
+div.messages{
+	border:1px solid rgb(250,100,20);
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-bottom: 20px;
+	position: relative;
+	width:50%;
+	display: inline-flex;
+}
+div.name{
+	color:white;
+	background: rgb(250,100,20);
+	position: relative;
+	height:100%;
+	width:20%;
+	padding:10px;
+}
+div.message{
+	background: whitesmoke;
+	position: relative;
+	height: 100%;
+	width:80%;
+	color:black;
+	padding:10px;
+	margin-right: 0px;
+}
