@@ -20,7 +20,7 @@ class FileManage():
             f.close()
             m=Messages("s","Created a file sucessfully ")
         except():
-            print "Error in creating file"
+            print ("Error in creating file")
 #append text to the end
     def appendToFile(self,text):
         try:
@@ -33,7 +33,7 @@ class FileManage():
             f.write(content)
             f.close()
         except():
-             print "Error in opening the filename"+filename
+             print ("Error in opening the filename"+filename)
 
     def preAppend(self,text):
         try:
@@ -50,7 +50,7 @@ class FileManage():
                 f.write(newWrite);
                 f.close()
         except:
-            print "Error in preappending to file"
+            print ("Error in preappending to file")
     def writeToFile(self,text):
         try:
             f=open(filename,"w");
@@ -58,7 +58,7 @@ class FileManage():
             f.close()
             return True
         except():
-            print "Error in creating the file"
+            print ("Error in creating the file")
             return False
 
     def readFile(self):
@@ -68,5 +68,5 @@ class FileManage():
             f.close()
             return content
         except():
-            print "Error while reading file"
+            print ("Error while reading file")
             return False
