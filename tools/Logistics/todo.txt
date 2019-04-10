@@ -1,0 +1,9 @@
+Logistics Algorithim:
+	1.Vehicle Details -> number plate,capacity,model,make
+	2.Vehicle Location -> Town
+	3.Monitor distance traveled(calculated time * vehicle speed)
+	4.Customer request
+
+Vehicles Database:
+	1.Vehicle Details -> number plate,capacity,model,make
+	2.Vehicle current Location -> Town
